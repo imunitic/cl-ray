@@ -1,0 +1,17 @@
+# Cl-Ray - raytracer challenge project.
+
+## Usage
+
+## Installation
+
+## Author
+
+* Ivica Munitic
+
+## Copyright
+
+Copyright (c) 2025 Ivica Munitic
+
+## License
+
+Licensed under the MIT License.
