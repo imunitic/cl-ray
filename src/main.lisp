@@ -2,6 +2,7 @@
   (:use #:cl)
   (:export #:create-vector
            #:create-point
+           #:create-tuple
            #:float-equal
            #:tuple-x
            #:tuple-y
@@ -10,7 +11,8 @@
            #:is-vector
            #:is-point
            #:t+
-           #:t-))
+           #:t-
+           #:t-neg))
 (in-package #:cl-ray)
 
 (defstruct tuple 
@@ -24,6 +26,9 @@
 
 (defun create-point (x y z)
   (make-tuple :x x :y y :z z :w 1.0))
+
+(defun create-tuple (x y z w)
+  (make-tuple :x x :y y :z z :w w))
 
 (defun is-vector (x)
   (float-equal (tuple-w x) 0.0))
@@ -49,3 +54,7 @@
     :y (- (tuple-y t1) (tuple-y t2))
     :z (- (tuple-z t1) (tuple-z t2))
     :w (- (tuple-w t1) (tuple-w t2))))
+
+(defun t-neg (t1)
+  (let ((zero (create-tuple 0 0 0 0)))
+    (t- zero t1)))

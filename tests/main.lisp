@@ -57,3 +57,24 @@
         (ok (cl-ray:float-equal (cl-ray:tuple-y result) (cl-ray:tuple-y t-expected)))
         (ok (cl-ray:float-equal (cl-ray:tuple-z result) (cl-ray:tuple-z t-expected)))
         (ok (cl-ray:float-equal (cl-ray:tuple-w result) (cl-ray:tuple-w t-expected)))))))
+
+(deftest test-vector-negation
+  (let ((t1 (cl-ray:create-vector 1 -2 3))
+        (t-expected (cl-ray:create-vector -1 2 -3)))
+    (testing "(cl-ray:t-neg t1) should be equal to t-expected"
+      (let ((result (cl-ray:t-neg t1)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-x result) (cl-ray:tuple-x t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-y result) (cl-ray:tuple-y t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-z result) (cl-ray:tuple-z t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-w result) (cl-ray:tuple-w t-expected)))))))
+
+(deftest test-tuple-negation 
+  (let ((t1 (cl-ray:create-tuple 1 -2 3 -4))
+        (t-expected (cl-ray:create-tuple -1 2 -3 4)))
+    (testing "(cl-ray:t-neg t1) should be equal to t-expected" 
+      (let ((result (cl-ray:t-neg t1)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-x result) (cl-ray:tuple-x t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-y result) (cl-ray:tuple-y t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-z result) (cl-ray:tuple-z t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-w result) (cl-ray:tuple-w t-expected)))))))
+
