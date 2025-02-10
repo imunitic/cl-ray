@@ -40,8 +40,19 @@
   (let ((t1 (cl-ray:create-point 3 -2 5))
         (t2 (cl-ray:create-vector -2 3 1))
         (t-expected (cl-ray:create-point 1 1 6)))
-    (testing "(cl-ray:t+ t1 t1) should be equal to t-expected"
+    (testing "(cl-ray:t+ t1 t2) should be equal to t-expected"
       (let ((result (cl-ray:t+ t1 t2)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-x result) (cl-ray:tuple-x t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-y result) (cl-ray:tuple-y t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-z result) (cl-ray:tuple-z t-expected)))
+        (ok (cl-ray:float-equal (cl-ray:tuple-w result) (cl-ray:tuple-w t-expected)))))))
+
+(deftest test-tuple-subtraction
+  (let ((t1 (cl-ray:create-vector 3 2 1))
+        (t2 (cl-ray:create-vector 5 6 7))
+        (t-expected (cl-ray:create-vector -2 -4 -6)))
+    (testing "(cl-ray:t- t1 t2) should be equal to t-expected"
+      (let ((result (cl-ray:t- t1 t2)))
         (ok (cl-ray:float-equal (cl-ray:tuple-x result) (cl-ray:tuple-x t-expected)))
         (ok (cl-ray:float-equal (cl-ray:tuple-y result) (cl-ray:tuple-y t-expected)))
         (ok (cl-ray:float-equal (cl-ray:tuple-z result) (cl-ray:tuple-z t-expected)))

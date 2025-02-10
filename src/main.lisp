@@ -9,7 +9,8 @@
            #:tuple-w
            #:is-vector
            #:is-point
-           #:t+))
+           #:t+
+           #:t-))
 (in-package #:cl-ray)
 
 (defstruct tuple 
@@ -41,3 +42,10 @@
     :y (+ (tuple-y t1) (tuple-y t2))
     :z (+ (tuple-z t1) (tuple-z t2))
     :w (+ (tuple-w t1) (tuple-w t2))))
+
+(defun t- (t1 t2)
+  (make-tuple 
+    :x (- (tuple-x t1) (tuple-x t2))
+    :y (- (tuple-y t1) (tuple-y t2))
+    :z (- (tuple-z t1) (tuple-z t2))
+    :w (- (tuple-w t1) (tuple-w t2))))
