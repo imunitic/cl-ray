@@ -2,7 +2,7 @@
   (:use #:cl)
   (:export #:create-vector
            #:create-point
-           #:floating-number-equal
+           #:float-equal
            #:tuple-x
            #:tuple-y
            #:tuple-z
@@ -25,15 +25,15 @@
   (make-tuple :x x :y y :z z :w 1.0))
 
 (defun is-vector (x)
-  (= (tuple-w x) 0.0))
+  (float-equal (tuple-w x) 0.0))
 
 (defun is-point (x)
-  (= (tuple-w x) 1.0))
+  (float-equal (tuple-w x) 1.0))
 
-(defconstant EPSILON 0.00001 "used for floating number comparison")
+(defconstant +EPSILON+ 0.00001 "used for floating number comparison")
 
-(defun floating-number-equal (x y)
-  (< (abs (- x y)) EPSILON))
+(defun float-equal (x y)
+  (< (abs (- x y)) +EPSILON+))
 
 (defun t+ (t1 t2)
   (make-tuple 
