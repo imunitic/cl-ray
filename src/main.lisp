@@ -12,6 +12,7 @@
            #:is-point
            #:t+
            #:t-
+           #:t*
            #:t-neg))
 (in-package #:cl-ray)
 
@@ -54,6 +55,13 @@
     :y (- (tuple-y t1) (tuple-y t2))
     :z (- (tuple-z t1) (tuple-z t2))
     :w (- (tuple-w t1) (tuple-w t2))))
+
+(defun t* (t1 scalar)
+  (make-tuple 
+    :x (* (tuple-x t1) scalar)
+    :y (* (tuple-y t1) scalar)
+    :z (* (tuple-z t1) scalar)
+    :w (* (tuple-w t1) scalar)))
 
 (defun t-neg (t1)
   (let ((zero (create-tuple 0 0 0 0)))
