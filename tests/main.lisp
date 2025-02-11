@@ -87,3 +87,11 @@
     (testing "(cl-ray:t* t1 0.5) should be equal to t-expected"
       (check-tuple-equality result t-expected))))
 
+(deftest test-tuple-magnitude 
+  (testing "(cl-ray:magnitude t1) should be equal to 1"
+    (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector 1 0 0)) 1))
+    (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector 0 1 0)) 1))
+    (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector 0 0 1)) 1))
+    (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector 1 2 3)) (sqrt 14)))
+    (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector -1 -2 -3)) (sqrt 14)))))
+

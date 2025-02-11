@@ -1,0 +1,6 @@
+version: '3'
+
+tasks:
+  test:
+    cmds:
+      - ros -e '(asdf:load-system :cl-ray)' -e '(asdf:load-system :cl-ray/tests)' -e '(asdf:test-system :cl-ray)' -q

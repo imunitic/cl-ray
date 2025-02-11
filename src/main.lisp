@@ -13,7 +13,8 @@
            #:t+
            #:t-
            #:t*
-           #:t-neg))
+           #:t-neg
+           #:magnitude))
 (in-package #:cl-ray)
 
 (defstruct tuple 
@@ -66,3 +67,9 @@
 (defun t-neg (t1)
   (let ((zero (create-tuple 0 0 0 0)))
     (t- zero t1)))
+
+(defun magnitude (t1)
+  (sqrt (+ (expt (tuple-x t1) 2)
+           (expt (tuple-y t1) 2)
+           (expt (tuple-z t1) 2)
+           (expt (tuple-w t1) 2))))
