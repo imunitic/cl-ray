@@ -4,7 +4,7 @@
         :rove))
 (in-package :cl-ray/tests/main)
 
-;; helpers 
+;; helpers
 (defun check-tuple-equality (result expected)
   (ok (cl-ray:float-equal (cl-ray:tuple-x result) (cl-ray:tuple-x expected)))
   (ok (cl-ray:float-equal (cl-ray:tuple-y result) (cl-ray:tuple-y expected)))
@@ -66,11 +66,11 @@
     (testing "(cl-ray:t-neg t1) should be equal to t-expected"
       (check-tuple-equality result t-expected))))
 
-(deftest test-tuple-negation 
+(deftest test-tuple-negation
   (let* ((t1 (cl-ray:create-tuple 1 -2 3 -4))
         (t-expected (cl-ray:create-tuple -1 2 -3 4))
         (result (cl-ray:t-neg t1)))
-    (testing "(cl-ray:t-neg t1) should be equal to t-expected" 
+    (testing "(cl-ray:t-neg t1) should be equal to t-expected"
       (check-tuple-equality result t-expected))))
 
 (deftest test-tuple-multiplication
@@ -87,7 +87,7 @@
     (testing "(cl-ray:t* t1 0.5) should be equal to t-expected"
       (check-tuple-equality result t-expected))))
 
-(deftest test-tuple-magnitude 
+(deftest test-tuple-magnitude
   (testing "(cl-ray:magnitude t1) should be equal to 1"
     (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector 1 0 0)) 1))
     (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector 0 1 0)) 1))
@@ -95,3 +95,34 @@
     (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector 1 2 3)) (sqrt 14)))
     (ok (cl-ray:float-equal (cl-ray:magnitude (cl-ray:create-vector -1 -2 -3)) (sqrt 14)))))
 
+(deftest test-vector-normalization
+  (let* ((v1 (cl-ray:create-vector 4 0 0))
+	 (expected (cl-ray:create-vector 1 0 0))
+	 (got (cl-ray:normalize v1)))
+    (testing "(cl-ray:normalize v1) should be equal to expected"
+      (check-tuple-equality got expected))))
+
+(deftest test-vector-normalization-2
+  (let* ((v1 (cl-ray:create-vector 1 2 3))
+	 (expected (cl-ray:create-vector (/ 1 (sqrt 14))
+					 (/ 2 (sqrt 14))
+					 (/ 3 (sqrt 14))))
+	 (got (cl-ray:normalize v1)))
+    (testing "(cl-ray:normalize v1) should be equal to expected"
+      (check-tuple-equality got expected))))
+
+(deftest test-vector-magnitude-of-normalized-vector
+  (let* ((v1 (cl-ray:create-vector 1 2 3))
+	 (nv1 (cl-ray:normalize v1))
+	 (expected 1)
+	 (got (cl-ray:magnitude nv1)))
+    (testing "(cl-ray:magnitude (cl-ray:normalize v1)) should be equal to expected"
+      (ok got expected))))
+
+(deftest test-vector-dot-product
+  (let* ((v1 (cl-ray:create-vector 1 2 3))
+	 (v2 (cl-ray:create-vector 2 3 4))
+	 (expected 20)
+	 (got (cl-ray:dot v1 v2)))
+    (testing "(cl-ray:dot v1 v2) should be equal to expected"
+      (ok got expected))))
