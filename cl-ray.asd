@@ -9,6 +9,16 @@
   :description "raytracer challenge project."
   :in-order-to ((test-op (test-op "cl-ray/tests"))))
 
+(defsystem "cl-ray/examples"
+  :version "0.0.1"
+  :author "Ivica Munitic"
+  :license "MIT"
+  :depends-on ("cl-ray")
+  :components ((:module "examples"
+		:components
+		((:file "projectile"))))
+  :description "raytracer challenge project - example programs")
+
 (defsystem "cl-ray/tests"
   :author "Ivica Munitic"
   :license "MIT"
