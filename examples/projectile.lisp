@@ -1,6 +1,7 @@
 (defpackage cl-ray/examples/projectile
   (:use :cl
-	:cl-ray))
+	:cl-ray)
+  (:export :main))
 
 (in-package :cl-ray/examples/projectile)
 

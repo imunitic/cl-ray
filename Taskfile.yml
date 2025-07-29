@@ -1,6 +1,46 @@
-version: '3'
+version: "3"
 
 tasks:
   test:
+    desc: Run all tests
     cmds:
-      - ros -e '(asdf:load-system :cl-ray)' -e '(asdf:load-system :cl-ray/tests)' -e '(asdf:test-system :cl-ray)' -q
+      - ros -e "(asdf:load-system :cl-ray)" -e "(asdf:load-system :cl-ray/tests)" -e "(asdf:test-system :cl-ray)" -q
+
+  repl:
+    desc: Start a REPL with the system loaded
+    cmds:
+      - ros run --load src/main.lisp
+
+  build:
+    desc: Compile the system
+    cmds:
+      - ros -e "(asdf:load-system :cl-ray)" -q
+
+  clean:
+    desc: Clean compiled files and cache
+    cmds:
+      - rm -rf ~/.cache/common-lisp/sbcl-*/*/cl-ray/
+      - find . -name "*.fasl" -delete
+      - find . -name "*.fas" -delete
+      - find . -name "*.mem" -delete
+      - find . -name "*.lib" -delete
+
+  example:projectile:
+    desc: Run the projectile example
+    cmds:
+      - ros -e "(asdf:load-system :cl-ray/examples)" -e "(cl-ray/examples/projectile:main)" -q
+
+  check:
+    desc: Check for syntax errors without running tests
+    cmds:
+      - ros -e "(asdf:load-system :cl-ray)" -e "(asdf:load-system :cl-ray/tests)" -q
+
+  deps:
+    desc: Install dependencies
+    cmds:
+      - ros install rove
+
+  help:
+    desc: Show available tasks
+    cmds:
+      - task --list
