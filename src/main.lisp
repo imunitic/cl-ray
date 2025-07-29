@@ -87,7 +87,7 @@
 (defun dot (v1 v2)
   (+ (* (tuple-x v1) (tuple-x v2))
      (* (tuple-y v1) (tuple-y v2))
-     (* (tuple-z v1) (tuple-y v2))
+     (* (tuple-z v1) (tuple-z v2))
      (* (tuple-w v1) (tuple-w v2))))
 
 (defun cross-product (v1 v2)

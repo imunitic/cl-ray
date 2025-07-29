@@ -117,20 +117,21 @@
 	 (expected 1)
 	 (got (cl-ray:magnitude nv1)))
     (testing "(cl-ray:magnitude (cl-ray:normalize v1)) should be equal to expected"
-      (ok got expected))))
+      (ok (cl-ray:float-equal got expected)))))
 
 (deftest test-vector-dot-product
   (let* ((v1 (cl-ray:create-vector 1 2 3))
 	 (v2 (cl-ray:create-vector 2 3 4))
-	 (expected 20)
+	 (expected 20.0)
 	 (got (cl-ray:dot v1 v2)))
     (testing "(cl-ray:dot v1 v2) should be equal to expected"
-      (ok got expected))))
+      (ok (cl-ray:float-equal got expected)))))
 
 (deftest test-vector-cross-product
   (let* ((v1 (cl-ray:create-vector 1 2 3))
 	 (v2 (cl-ray:create-vector 2 3 4))
 	 (cross-v1-v2 (cl-ray:cross-product v1 v2))
 	 (cross-v2-v1 (cl-ray:cross-product v2 v1)))
-    (ok cross-v1-v2 (cl-ray:create-vector -1 2 -1))
-    (ok cross-v2-v1 (cl-ray:create-vector 1 -2 1))))
+    (testing "cross product tests"
+      (check-tuple-equality cross-v1-v2 (cl-ray:create-vector -1 2 -1))
+      (check-tuple-equality cross-v2-v1 (cl-ray:create-vector 1 -2 1)))))

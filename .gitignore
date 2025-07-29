@@ -1,9 +1,135 @@
-*.abcl
+# Common Lisp specific
 *.fasl
-*.dx32fsl
-*.dx64fsl
-*.lx32fsl
-*.lx64fsl
-*.x86f
+*.fas
+*.lisp-tmp
+*.lisp-temp
+*.lisp~
+*.lisp.bak
+*.lisp.orig
+*.lisp.swp
+*.lisp.swo
+*.lisp~
+
+# ASDF
+.asd.lisp-tmp
+.asd.lisp-temp
+.asd.lisp~
+.asd.lisp.bak
+.asd.lisp.orig
+.asd.lisp.swp
+.asd.lisp.swo
+.asd.lisp~
+
+# Quicklisp
+quicklisp/
+~/.quicklisp/
+
+# Roswell
+~/.roswell/
+*.ros
+
+# SBCL
+sbcl.core
+sbcl.core.*
+
+# CCL
+ccl/
+ccl.core
+ccl.core.*
+
+# CLISP
+*.mem
+*.fas
+*.lib
+
+# ABCL
+abcl.jar
+abcl-contrib.jar
+
+# Build artifacts
+build/
+dist/
+*.tar.gz
+*.zip
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
 *~
-.#*
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.out
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Logs
+*.log
+logs/
+
+# Cache directories
+.cache/
+cache/
+
+# Test results
+test-results/
+coverage/
+
+# Documentation build
+doc/build/
+docs/build/
+
+# Package manager
+node_modules/
+vendor/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
