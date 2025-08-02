@@ -35,16 +35,16 @@
 (defun create-tuple (x y z w)
   (make-tuple :x x :y y :z z :w w))
 
+(defconstant +EPSILON+ 0.00001 "used for floating number comparison")
+
+(defun float-equal (x y)
+  (< (abs (- x y)) +EPSILON+))
+
 (defun is-vector (x)
   (float-equal (tuple-w x) 0.0))
 
 (defun is-point (x)
   (float-equal (tuple-w x) 1.0))
-
-(defconstant +EPSILON+ 0.00001 "used for floating number comparison")
-
-(defun float-equal (x y)
-  (< (abs (- x y)) +EPSILON+))
 
 (defun t+ (t1 t2)
   (create-tuple
